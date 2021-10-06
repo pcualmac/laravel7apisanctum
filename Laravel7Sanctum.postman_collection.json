@@ -1,0 +1,348 @@
+{
+	"info": {
+		"_postman_id": "8db7de9b-7be5-4d81-a37e-0c6fbc609891",
+		"name": "Laravel7Sanctum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-xsfr-token",
+								"value": "{{xsrf-cookie}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"pumpignano@gmail.com\",\n\t\"password\": \"testtest\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/login",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prodoct",
+			"item": [
+				{
+					"name": "List GB",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// const jar = pm.cookies.jar();",
+									"",
+									"// jar.clear(pm.request.url, function (error) {",
+									"//   // error - <Error>",
+									"// });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"connection": true,
+							"user-agent": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "laravel7apisanctum.localhost:8438",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-xsfr-token",
+								"value": "20|h4LRNwuqdfSyP36xefQktnEcxiTELX0nDPvTqaxG",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/product",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"Postman ZEfTXtlakx\",\n    \"product_desc\": \"Postman Desc\",\n    \"product_category_id\": 6,\n    \"price\": \"1.02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/product/store",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"product",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Fr",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_name\": \"Postman ZEfTXtlakx\",\n    \"product_desc\": \"Postman Desc\",\n    \"product_category_id\": 6,\n    \"price\": \"1.02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/product/store",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"product",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product_id\": 54,\n    \"product_name\": \"Postman 54 ZEfTXtlakx\",\n    \"product_desc\": \"Postman Desc\",\n    \"product_category_id\": 1,\n    \"price\": \"54.02\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/product/store",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"product",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true
+						},
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "30|jqwLWTspipA6HDrUAva21O1Gly5baO5A28l8LGTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Referer",
+								"value": "laravel7apisanctum.localhost:8438/",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-xsfr-token",
+								"value": "{{xsrf-cookie}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://laravel7apisanctum.localhost:8438/api/user",
+							"protocol": "https",
+							"host": [
+								"laravel7apisanctum",
+								"localhost"
+							],
+							"port": "8438",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: 'https://laravel7apisanctum.localhost:8438/sanctum/csrf-cookie',",
+					"    method: 'GET'",
+					"}, function(error, response,{ cookies }){",
+					"    if(!error)",
+					"    {",
+					"        pm.environment.set('xsrf-cookie', cookies.get('XSRF-TOKEN'))",
+					"    }",
+					"})"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://laravel7apisanctum.localhost:8438"
+		}
+	]
+}

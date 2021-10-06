@@ -19,18 +19,25 @@ class Products extends Model
     protected $fillable = [
         'product_name',
         'product_desc',
-        'product_category',
-        'price',
-    ];
-
-    protected $visible = [
-        'product_name',
-        'product_desc',
         'product_category_id',
         'price',
     ];
 
+    protected $visible = [
+        'product_id',
+        'product_name',
+        'product_desc',
+        'product_category_id',
+        'price',
+        'product_category',
+    ];
+
     protected $appends = ['product_category'];
+
+    public function getProductCategoryAttribute()
+    {
+        return $this->product_category()->get();
+    }
 
     public function getDates()
     {

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Task;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -45,6 +44,7 @@ class ProductTest extends TestCase
             'product_name' => $product->product_name,
             'product_desc' => $product->product_desc,
             'product_category_id' => $product->product_category_id,
+            'price' => $product->price,
         ]);
     }
 
@@ -56,6 +56,7 @@ class ProductTest extends TestCase
             'product_name' => $product->product_name,
             'product_desc' => $product->product_desc,
             'product_category_id' => $product->product_category_id,
+            'price' => $product->price,
         ]);
     }
 
@@ -69,7 +70,7 @@ class ProductTest extends TestCase
         ];
         $response = $this->withHeaders([
             'x-xsfr-token' => 'fr-ch',
-        ])->json('POST', route('product.destroy',$delete));
+        ])->json('POST', route('product.destroy', $delete));
         $this->assertEquals($response['status_code'], 200);
         $this->assertSoftDeleted('products', ['product_name' => $response['data']['product_name']]);
     }
@@ -92,22 +93,24 @@ class ProductTest extends TestCase
         $product = $this->createProductsWithCategory(['local' => 'en-gb']);
         $update = $product->toArray();
         $update['product_id'] = $product->id;
-        $update['product_name'] =  'updated name';
-        $response = $this->json('POST',route('product.update', $update));
+        $update['product_name'] = 'updated name';
+        unset($update['product_category']);
+        $response = $this->json('POST', route('product.update', $update));
 
         $this->assertDatabaseHas('products', ['product_name' => 'updated name']);
     }
+
     public function test_update_a_product_fr_ch()
     {
         $product = $this->createProductsWithCategory(['local' => 'fr-ch']);
         $update = $product->toArray();
         $update['product_id'] = $product->id;
-        $update['product_name'] =  'updated name';
+        $update['product_name'] = 'updated name';
+        unset($update['product_category']);
         $response = $this->withHeaders([
             'x-xsfr-token' => 'fr-ch',
-        ])->json('POST',route('product.update', $update));
+        ])->json('POST', route('product.update', $update));
         $this->assertEquals($response['status_code'], 200);
         $this->assertDatabaseHas('products', ['product_name' => 'updated name']);
     }
-
 }
